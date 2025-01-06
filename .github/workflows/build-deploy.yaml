@@ -5,6 +5,12 @@ on:
       - 'app/**'
     branches:
       - main
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Reason for manual workflow run'
+        required: false
+        default: 'Manual trigger'
 
 jobs:
   build:

@@ -7,8 +7,10 @@ on:
       - main
 
 jobs:
-  build-and-push:
+  build:
     runs-on: ubuntu-latest
+    outputs:
+      image_tag: ${{ steps.image_tag.outputs.tag }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -19,6 +21,10 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
 
+      - name: Generate Image Tag
+        id: image_tag
+        run: echo "tag=v${{ github.run_number }}" >> $GITHUB_OUTPUT
+
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
@@ -26,16 +32,21 @@ jobs:
           push: true
           tags: |
             ${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.IMAGE_NAME }}:latest
-            ${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.IMAGE_NAME }}:v${{ github.run_number }}
+            ${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.IMAGE_NAME }}:${{ steps.image_tag.outputs.tag }}
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
 
       - name: Update deployment file
         run: |
-          sed -i "s|${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.IMAGE_NAME }}:.*|${{ env.DOCKER_HUB_USERNAME }}/${{ secrets.IMAGE_NAME }}:v${{ github.run_number }}|" k8s/deployment.yaml
+          sed -i "s|${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.IMAGE_NAME }}:.*|${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.IMAGE_NAME }}:${{ needs.build.outputs.image_tag }}|" k8s/deployment.yaml
 
-      - name: Commit and push changes
-        run: |
-          git config --global user.name 'dellabeneta'
-          git config --global user.email 'm.dellabeneta@gmail.com'
-          git add k8s/deployment.yaml
-          git commit -m "Update image tag to v${{ github.run_number }}"
-          git push
+      - name: Auto Commit
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Update image tag to ${{ needs.build.outputs.image_tag }}
+          file_pattern: k8s/deployment.yaml

@@ -12,6 +12,9 @@ on:
         required: false
         default: 'Manual trigger'
 
+permissions:
+  contents: write  
+
 jobs:
   build:
     runs-on: ubuntu-latest

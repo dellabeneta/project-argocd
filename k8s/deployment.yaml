@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: podname
-        image: registry.digitalocean.com/doks-docr/podname:v1
+        image: registry.digitalocean.com/doks-docr/podname:v12
         #image: dellabeneta/podname:v10
         ports:
         - containerPort: 8080

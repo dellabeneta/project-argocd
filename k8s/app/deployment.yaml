@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: podname
+  labels:
+    app: podname
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: podname
+  template:
+    metadata:
+      labels:
+        app: podname
+    spec:
+      containers:
+      - name: podname
+        image: registry.digitalocean.com/doks-docr/podname:
+        ports:
+        - containerPort: 8080
+

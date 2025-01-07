@@ -5,42 +5,36 @@ Com um repositório GitHub bem estruturado, contendo pastas específicas para a 
 O processo funciona conectando diferentes tecnologias. Sempre que houver alterações no código-fonte, um workflow gera automaticamente uma nova imagem Docker da aplicação. Em seguida, esse mesmo workflow atualiza o manifesto Kubernetes correspondente, armazenado na pasta designada. O ArgoCD, por sua vez, detecta essa atualização no manifesto e sincroniza a nova versão da aplicação no cluster, criando um fluxo contínuo e confiável de deploy automatizado.
 <br><br>
 #### Aqui está uma estrutura resumida do projeto:
+```
+della@ubuntu:~/projetos/project-argocd$ tree -L 4
+.
+├── app
+│   ├── Dockerfile
+│   ├── requirements.txt
+│   └── src
+│       ├── app.py
+│       └── templates
+│           └── index.html
+├── infra
+│   └── terraform
+│       ├── backend.tf
+│       ├── doks.tf
+│       ├── network.tf
+│       ├── provider.tf
+│       ├── registry.tf
+│       └── variables.tf
+├── k8s
+│   ├── argocd-application.yaml
+│   ├── deployment.yaml
+│   └── service.yaml
+├── LICENSE
+├── README.md
+└── scripts
+    └── install-argocd.sh
 
-    meu-projeto/
-    
-    ├── app/ # Código-fonte da aplicação
-    
-    │ ├── src/
-    
-    │ ├── Dockerfile # Arquivo para build da imagem Docker
-    
-    │ └── ... # Outros arquivos do projeto
-    
-    ├── infra/
-    
-    │ └── terraform/ # Arquivos Terraform para infraestrutura
-    
-    │ ├── main.tf
-    
-    │ ├── variables.tf
-    
-    │ └── ...
-    
-    ├── k8s/ # Manifests do Kubernetes
-    
-    │ ├── Deployment.yaml # Define o deploy da aplicação
-    
-    │ ├── Service.yaml # Define o serviço (LB ou ClusterIP)
-    
-    │ └── ...
-    
-    └── .github/
-    
-    └── workflows/ # Workflows do GitHub Actions
-    
-    └── build-deploy.yaml # Workflow automatizado
-
-<br><br>
+8 directories, 16 files
+```
+<br>
 
 #### Fluxo Resumido:
 

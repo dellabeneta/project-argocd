@@ -100,6 +100,20 @@ ArgoCD sincroniza com o cluster Kubernetes → Nova versão online
 
 O projeto utiliza a Digital Ocean como provedor de cloud, com uma configuração Terraform que provisiona:
 
+> ⚠️ **Importante**: Antes de executar o Terraform, crie seu arquivo `terraform.tfvars` na pasta `infra/terraform/` com suas configurações específicas. O restante do código Terraform é genérico e reutilizável.
+
+Exemplo de `terraform.tfvars`:
+```hcl
+do_token        = "seu_token_da_digital_ocean"
+region          = "nyc1"
+cluster_name    = "seu-cluster"
+k8s_version     = "1.25.4-do.0"
+node_pool_name  = "worker-pool"
+node_size       = "s-2vcpu-4gb"
+min_nodes       = 1
+max_nodes       = 5
+```
+
 - **Cluster Kubernetes (DOKS)**:
   - Versão personalizada do Kubernetes
   - Integração nativa com registro de containers

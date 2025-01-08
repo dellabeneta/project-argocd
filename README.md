@@ -1,24 +1,10 @@
+https://drive.google.com/file/d/1QgjnmR5it1GI0S2VYD3Ysov_t3qD4ypY/view?usp=sharing
+
+<img src="https://drive.google.com/uc?export=view&id=1QgjnmR5it1GI0S2VYD3Ysov_t3qD4ypY" width="1000">
+
+
 ## Meu projeto de fluxo contínuo, com Argo CD.
 
-<table style="border-collapse: collapse; border: none;">
-  <tr>
-    <td style="border: none; text-align: center;">
-      <img src="https://via.placeholder.com/150" alt="Imagem 1" width="150" />
-      <br>
-      <b>Legenda 1</b>
-    </td>
-    <td style="border: none; text-align: center;">
-      <img src="https://via.placeholder.com/150" alt="Imagem 2" width="150" />
-      <br>
-      <b>Legenda 2</b>
-    </td>
-    <td style="border: none; text-align: center;">
-      <img src="https://via.placeholder.com/150" alt="Imagem 3" width="150" />
-      <br>
-      <b>Legenda 3</b>
-    </td>
-  </tr>
-</table>
 
 Com um repositório GitHub bem estruturado, contendo pastas específicas para a aplicação, arquivos Terraform para provisionamento de infraestrutura, e manifests Kubernetes, é possível implementar um fluxo totalmente automatizado: do commit no código-fonte ao deploy da aplicação em um cluster Kubernetes.
 

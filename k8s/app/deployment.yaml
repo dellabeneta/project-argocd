@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: podname
-        image: registry.digitalocean.com/project-argocd-registry/podname:latest
+        image: registry.digitalocean.com/project-argocd-registry/podname:v28
         ports:
         - containerPort: 8080

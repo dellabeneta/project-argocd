@@ -1,9 +1,5 @@
 ## Meu projeto de fluxo contínuo, com Argo CD.
 
-| ![Imagem 1](https://via.placeholder.com/150) | ![Imagem 2](https://via.placeholder.com/150) | ![Imagem 3](https://via.placeholder.com/150) |
-|:--------------------------------------------:|:--------------------------------------------:|:--------------------------------------------:|
-| **Legenda 1**                                | **Legenda 2**                                | **Legenda 3**                                |
-
 <table style="border-collapse: collapse; border: none;">
   <tr>
     <td style="border: none; text-align: center;">

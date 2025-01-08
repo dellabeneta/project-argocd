@@ -53,7 +53,7 @@ jobs:
 
       - name: Update deployment file
         run: |
-          sed -i "s|registry.digitalocean.com/${{ secrets.DIGITALOCEAN_REGISTRY_NAME }}/${{ secrets.IMAGE_NAME }}:.*|registry.digitalocean.com/${{ secrets.DIGITALOCEAN_REGISTRY_NAME }}/${{ secrets.IMAGE_NAME }}:${{ needs.build.outputs.image_tag }}|" k8s/deployment.yaml
+          sed -i "s|registry.digitalocean.com/${{ secrets.DIGITALOCEAN_REGISTRY_NAME }}/${{ secrets.IMAGE_NAME }}:.*|registry.digitalocean.com/${{ secrets.DIGITALOCEAN_REGISTRY_NAME }}/${{ secrets.IMAGE_NAME }}:${{ needs.build.outputs.image_tag }}|" k8s/app/deployment.yaml
 
       - name: Auto Commit
         uses: stefanzweifel/git-auto-commit-action@v4

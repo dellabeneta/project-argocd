@@ -1,5 +1,11 @@
 ## Meu projeto de fluxo contínuo, com Argo CD.
 
+<div style="display: inline-block;">
+    <img src="assets/argocd.png" alt="ArgoCD" width="200"/>
+    <img src="assets/docker.png" alt="Docker" width="200"/>
+    <img src="assets/k8s.png" alt="Kubernetes" width="200"/>
+    <img src="assets/terraform.png" alt="Terraform" width="200"/>
+</div>
 
 Com um repositório GitHub bem estruturado, contendo pastas específicas para a aplicação, arquivos Terraform para provisionamento de infraestrutura, e manifests Kubernetes, é possível implementar um fluxo totalmente automatizado: do commit no código-fonte ao deploy da aplicação em um cluster Kubernetes.
 

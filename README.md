@@ -14,7 +14,7 @@ O processo funciona conectando diferentes tecnologias. Sempre que houver altera�
 
 O projeto utiliza a Digital Ocean como provedor de cloud, com uma configuração Terraform que provisiona:
 
-> ⚠️ **Importante**: Antes de executar o Terraform, crie seu arquivo `terraform.tfvars` na pasta `infra/terraform/` com suas configurações específicas. O restante do código Terraform é genérico e reutilizável.
+> ⚠️ **Importante¹**: Antes de executar o Terraform, crie seu arquivo `terraform.tfvars` na pasta `infra/terraform/` com suas configurações específicas. O restante do código Terraform é genérico e reutilizável.
 
 Exemplo de `terraform.tfvars`:
 ```hcl
@@ -85,9 +85,14 @@ O diretório `scripts/` contém utilitários essenciais:
    - Gera arquivo kubeconfig
 
 2. **Configuração do Cluster**:
+
+   >⚠️ **Importante²**: Tu vai conseguir se virar em localhost e algum emulador de cluster. Mas indico FORTEMENTE que você tenha um domínio e um DNS real.
+
    - Instalação do Nginx Ingress
    - Configuração do Cert Manager
    - Deploy do Argo CD
+
+   > ⚠️ **Importante³**: O Cert Manager precisa que os DNS estejam propagados ao solicitar certificados reais, especialmente ao usar o desafio DNS-01 do Let's Encrypt. Embora seja possível instalar o Cert Manager antes da propagação dos DNS, a emissão dos certificados depende dessa propagação. Fique atento!
 
 3. **Deploy da Aplicação**:
    - Push do código para o GitHub

@@ -4,6 +4,25 @@
 |:--------------------------------------------:|:--------------------------------------------:|:--------------------------------------------:|
 | **Legenda 1**                                | **Legenda 2**                                | **Legenda 3**                                |
 
+<table style="border-collapse: collapse; border: none;">
+  <tr>
+    <td style="border: none; text-align: center;">
+      <img src="https://via.placeholder.com/150" alt="Imagem 1" width="150" />
+      <br>
+      <b>Legenda 1</b>
+    </td>
+    <td style="border: none; text-align: center;">
+      <img src="https://via.placeholder.com/150" alt="Imagem 2" width="150" />
+      <br>
+      <b>Legenda 2</b>
+    </td>
+    <td style="border: none; text-align: center;">
+      <img src="https://via.placeholder.com/150" alt="Imagem 3" width="150" />
+      <br>
+      <b>Legenda 3</b>
+    </td>
+  </tr>
+</table>
 
 Com um repositório GitHub bem estruturado, contendo pastas específicas para a aplicação, arquivos Terraform para provisionamento de infraestrutura, e manifests Kubernetes, é possível implementar um fluxo totalmente automatizado: do commit no código-fonte ao deploy da aplicação em um cluster Kubernetes.
 

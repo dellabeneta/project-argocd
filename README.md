@@ -6,7 +6,7 @@ O processo funciona conectando diferentes tecnologias. Sempre que houver altera�
 <br><br>
 #### Aqui está uma estrutura resumida do projeto:
 ```
-della@ubuntu:~/projetos/project-argocd$ tree -L 4
+della@ubuntu:~/projetos/project-argocd$ tree -L 5
 .
 ├── app
 │   ├── Dockerfile
@@ -22,17 +22,25 @@ della@ubuntu:~/projetos/project-argocd$ tree -L 4
 │       ├── network.tf
 │       ├── provider.tf
 │       ├── registry.tf
+│       ├── terraform.tfvars
 │       └── variables.tf
 ├── k8s
-│   ├── argocd-application.yaml
-│   ├── deployment.yaml
-│   └── service.yaml
+│   ├── app
+│   │   ├── deployment.yaml
+│   │   ├── ingress.yaml
+│   │   └── service.yaml
+│   └── argocd
+│       ├── argocd-application.yaml
+│       └── argocd-ingress.yaml
 ├── LICENSE
 ├── README.md
 └── scripts
-    └── install-argocd.sh
+    ├── install-argocd.sh
+    ├── install-cert-manager.sh
+    ├── install-kubeconfig.sh
+    └── install-nginx-ingress.sh
 
-8 directories, 16 files
+10 directories, 22 files
 ```
 <br>
 

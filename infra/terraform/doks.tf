@@ -15,13 +15,13 @@ resource "digitalocean_kubernetes_cluster" "doks" {
     max_nodes  = var.max_nodes
   }
 
-  depends_on = [ digitalocean_vpc.doks_vpc ]
+  depends_on = [digitalocean_vpc.doks_vpc]
 }
 
 resource "digitalocean_container_registry_docker_credentials" "docr_credentials" {
-  registry_name = digitalocean_container_registry.docregistry.name
+  registry_name  = digitalocean_container_registry.docregistry.name
   expiry_seconds = 3600
-  write = true
+  write          = true
 }
 
 resource "local_file" "kubeconfig" {

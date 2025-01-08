@@ -1,7 +1,5 @@
-https://drive.google.com/file/d/1QgjnmR5it1GI0S2VYD3Ysov_t3qD4ypY/view?usp=sharing
 
-<img src="https://drive.google.com/uc?export=view&id=1QgjnmR5it1GI0S2VYD3Ysov_t3qD4ypY" width="1000">
-
+<img src="https://drive.google.com/uc?export=view&id=1JVQlMqpuYxlpi3DvmI3tLz6YG73ZX6TH" width="1000">
 
 ## Meu projeto de fluxo contínuo, com Argo CD.
 

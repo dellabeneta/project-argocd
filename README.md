@@ -19,9 +19,9 @@ O projeto utiliza a Digital Ocean como provedor de cloud, com uma configuração
 Exemplo de `terraform.tfvars`:
 ```hcl
 do_token        = "seu_token_da_digital_ocean"
-region          = "nyc1"
+region          = "nycX"
 cluster_name    = "seu-cluster"
-k8s_version     = "1.25.4-do.0"
+k8s_version     = "1.29.X-do.X"
 node_pool_name  = "worker-pool"
 node_size       = "s-2vcpu-4gb"
 min_nodes       = 1
@@ -121,16 +121,16 @@ kubectl get applications -n argocd
 
 ### Próximos Passos e Melhorias 🎯
 
-1. **Monitoramento** 📊:
+1. **Monitoramento**:
    - Implementar Prometheus para métricas
    - Configurar Grafana para visualização
 
-2. **Segurança** 🔒:
+2. **Segurança**:
    - Implementar Network Policies
    - Configurar SecurityContext nos pods
    - Adicionar scanning de vulnerabilidades
 
-3. **Alta Disponibilidade** ⚡:
+3. **Alta Disponibilidade**:
    - Configurar pod disruption budgets
    - Implementar health checks mais robustos
    - Adicionar estratégias de backup
@@ -139,4 +139,4 @@ kubectl get applications -n argocd
 
 <br>
 
-**Essa estrutura e fluxo garantem uma integração limpa e automatizada entre desenvolvimento, CI/CD e o cluster Kubernetes.** 🚀
+**Essa estrutura e fluxo garantem uma integração limpa e automatizada entre desenvolvimento, CI/CD e o cluster Kubernetes.** 

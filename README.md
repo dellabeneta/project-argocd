@@ -98,6 +98,7 @@ O diretório `scripts/` contém utilitários essenciais:
 2. **Configuração do Cluster**:
 
    >⚠️ **Importante²**: Tu vai conseguir se virar em localhost e algum emulador de cluster. Mas indico FORTEMENTE que você tenha um domínio e um DNS real.
+   
    > ⚠️ **Importante³**: O Cert Manager precisa que os DNS estejam propagados ao solicitar certificados reais, especialmente ao usar o desafio DNS-01 do Let's Encrypt. Embora seja possível instalar o Cert Manager antes da propagação dos DNS, a emissão dos certificados depende dessa propagação. Fique atento!
 
    - Instalação do Nginx Ingress

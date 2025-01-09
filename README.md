@@ -1,16 +1,19 @@
-## Meu projeto de fluxo contínuo, com Argo CD. 🚀
-
-<br>
+<h1 align="center">Projeto de fluxo contínuo, com Argo CD.</h1>
 <img src="assets/banner2.png"/>
 <br><br>
+
+<div align="center">
 
 [![Workflow](https://img.shields.io/github/actions/workflow/status/dellabeneta/project-argocd/build-deploy.yaml?color=success&label=Workflow&logo=githubactions)](https://github.com/dellabeneta/project-argocd/actions)
 [![Version](https://img.shields.io/badge/Version-1.0.0-blue?logo=github)](https://github.com/dellabeneta/project-argocd/releases) [![License](https://img.shields.io/github/license/dellabeneta/project-argocd?label=License&color=blue&logo=opensourceinitiative)](https://github.com/dellabeneta/project-argocd/blob/main/LICENSE) [![Infrastructure](https://img.shields.io/badge/Infrastructure-Terraform-blue?logo=terraform)](https://github.com/dellabeneta/project-argocd/tree/main/infra/terraform) 
 [![Kubernetes](https://img.shields.io/badge/Kubernetes-ready-brightgreen?logo=kubernetes)](https://kubernetes.io/docs/) [![Argo CD](https://img.shields.io/badge/Argo--CD-ready-brightgreen?logo=argo)](https://argo-cd.readthedocs.io/)
+</div>
 
+<div align="justify">
 Com um repositório GitHub bem estruturado, contendo pastas específicas para a aplicação, arquivos Terraform para provisionamento de infraestrutura, e manifests Kubernetes, é possível implementar um fluxo totalmente automatizado: do commit no código-fonte ao deploy da aplicação em um cluster Kubernetes.
 
 O processo funciona conectando diferentes tecnologias. Sempre que houver alterações no código-fonte, um workflow gera automaticamente uma nova imagem Docker da aplicação. Em seguida, esse mesmo workflow atualiza o manifesto Kubernetes correspondente, armazenado na pasta designada. O ArgoCD, por sua vez, detecta essa atualização no manifesto e sincroniza a nova versão da aplicação no cluster, criando um fluxo contínuo e confiável de deploy automatizado.
+</div>
 
 ## Detalhamento Técnico do Projeto 🛠️
 
@@ -35,12 +38,11 @@ max_nodes       = 5
 - **Cluster Kubernetes (DOKS)** 🎯:
   - Versão personalizada do Kubernetes
   - Integração nativa com registro de containers
-  - Node Pool com auto-scaling configurado (min: ${var.min_nodes}, max: ${var.max_nodes})
+  - Node Pool com auto-scaling configurado
   - VPC dedicada para isolamento de rede
 
 - **Container Registry** 📦:
   - Registro privado na Digital Ocean
-  - Credenciais com expiração de 1 hora (3600 segundos)
   - Integração automática com o cluster DOKS
 
 ### Aplicação Flask 🐍

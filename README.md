@@ -2,14 +2,11 @@
 
 <br>
 <img src="assets/banner2.png"/>
-<br>
+<br><br>
 
-![Build Status](https://img.shields.io/github/actions/workflow/status/dellabeneta/project-argocd/build-deploy.yaml)
-![Version](https://img.shields.io/badge/version-1.0.0-blue)
-![License](https://img.shields.io/github/license/dellabeneta/python-peoples-crud)
-![Terraform](https://img.shields.io/badge/terraform-infrastructure-blue)
-![Kubernetes Ready](https://img.shields.io/badge/kubernetes-ready-brightgreen)
-![Argo CD](https://img.shields.io/badge/argo--cd-deployed-blue?logo=argo)
+[![Workflow](https://img.shields.io/github/actions/workflow/status/dellabeneta/project-argocd/build-deploy.yaml?color=success&label=Workflow&logo=githubactions)](https://github.com/dellabeneta/project-argocd/actions)
+[![Version](https://img.shields.io/badge/Version-1.0.0-blue?logo=github)](https://github.com/dellabeneta/project-argocd/releases) [![License](https://img.shields.io/github/license/dellabeneta/project-argocd?label=License&color=blue&logo=opensourceinitiative)](https://github.com/dellabeneta/project-argocd/blob/main/LICENSE) [![Infrastructure](https://img.shields.io/badge/Infrastructure-Terraform-blue?logo=terraform)](https://github.com/dellabeneta/project-argocd/tree/main/infra/terraform) 
+[![Kubernetes](https://img.shields.io/badge/Kubernetes-ready-brightgreen?logo=kubernetes)](https://kubernetes.io/docs/) [![Argo CD](https://img.shields.io/badge/Argo--CD-ready-brightgreen?logo=argo)](https://argo-cd.readthedocs.io/)
 
 Com um repositório GitHub bem estruturado, contendo pastas específicas para a aplicação, arquivos Terraform para provisionamento de infraestrutura, e manifests Kubernetes, é possível implementar um fluxo totalmente automatizado: do commit no código-fonte ao deploy da aplicação em um cluster Kubernetes.
 

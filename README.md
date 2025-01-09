@@ -4,7 +4,7 @@
 <img src="assets/banner2.png"/>
 <br>
 
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/dellabeneta/project-argocd/build-deploy.yml?label=Build)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/dellabeneta/project-argocd/build-deploy.yaml?label=Build)
 ![GitHub top language](https://img.shields.io/github/languages/top/dellabeneta/project-argocd)
 
 ![Docker Pulls](https://img.shields.io/docker/pulls/dellabeneta/python-peoples-crud-backend)

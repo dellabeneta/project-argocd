@@ -4,6 +4,15 @@
 <img src="assets/banner2.png"/>
 <br>
 
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/dellabeneta/project-argocd/build-deploy.yml?label=Build)
+![GitHub top language](https://img.shields.io/github/languages/top/dellabeneta/project-argocd)
+
+![Docker Pulls](https://img.shields.io/docker/pulls/dellabeneta/python-peoples-crud-backend)
+![Docker Image Version](https://img.shields.io/docker/v/dellabeneta/python-peoples-crud-backend/latest)
+![Terraform Version](https://img.shields.io/badge/Terraform-v1.10.1-blue)
+
+![GitHub License](https://img.shields.io/github/license/dellabeneta/python-peoples-crud)
+
 Com um repositório GitHub bem estruturado, contendo pastas específicas para a aplicação, arquivos Terraform para provisionamento de infraestrutura, e manifests Kubernetes, é possível implementar um fluxo totalmente automatizado: do commit no código-fonte ao deploy da aplicação em um cluster Kubernetes.
 
 O processo funciona conectando diferentes tecnologias. Sempre que houver alterações no código-fonte, um workflow gera automaticamente uma nova imagem Docker da aplicação. Em seguida, esse mesmo workflow atualiza o manifesto Kubernetes correspondente, armazenado na pasta designada. O ArgoCD, por sua vez, detecta essa atualização no manifesto e sincroniza a nova versão da aplicação no cluster, criando um fluxo contínuo e confiável de deploy automatizado.

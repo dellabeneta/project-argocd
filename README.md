@@ -4,14 +4,12 @@
 <img src="assets/banner2.png"/>
 <br>
 
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/dellabeneta/project-argocd/build-deploy.yaml?label=Deploy)
-![GitHub top language](https://img.shields.io/github/languages/top/dellabeneta/project-argocd)
-
-![Docker Pulls](https://img.shields.io/docker/pulls/dellabeneta/project-argocd/app)
-![Docker Image Version](https://img.shields.io/docker/v/dellabeneta/python-peoples-crud-backend/latest)
-![Terraform Version](https://img.shields.io/badge/Terraform-v1.10.1-blue)
-
-![GitHub License](https://img.shields.io/github/license/dellabeneta/python-peoples-crud)
+![Build Status](https://img.shields.io/github/actions/workflow/status/dellabeneta/project-argocd/build-deploy.yaml)
+![Version](https://img.shields.io/badge/version-1.0.0-blue)
+![License](https://img.shields.io/github/license/dellabeneta/python-peoples-crud)
+![Terraform](https://img.shields.io/badge/terraform-infrastructure-blue)
+![Kubernetes Ready](https://img.shields.io/badge/kubernetes-ready-brightgreen)
+![Argo CD](https://img.shields.io/badge/argo--cd-deployed-blue?logo=argo)
 
 Com um repositório GitHub bem estruturado, contendo pastas específicas para a aplicação, arquivos Terraform para provisionamento de infraestrutura, e manifests Kubernetes, é possível implementar um fluxo totalmente automatizado: do commit no código-fonte ao deploy da aplicação em um cluster Kubernetes.
 

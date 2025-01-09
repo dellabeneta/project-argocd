@@ -7,7 +7,7 @@
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/dellabeneta/project-argocd/build-deploy.yaml?label=Deploy)
 ![GitHub top language](https://img.shields.io/github/languages/top/dellabeneta/project-argocd)
 
-![Docker Pulls](https://img.shields.io/docker/pulls/dellabeneta/project-argo/app/src/)
+![Docker Pulls](https://img.shields.io/docker/pulls/dellabeneta/project-argocd/app)
 ![Docker Image Version](https://img.shields.io/docker/v/dellabeneta/python-peoples-crud-backend/latest)
 ![Terraform Version](https://img.shields.io/badge/Terraform-v1.10.1-blue)
 

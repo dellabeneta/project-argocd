@@ -57,7 +57,7 @@ kubectl get all -A
 ```
 <br>
 
-#### **2. Instalar o Ingress Controller (Nginx)**
+#### 2. Instalar o Ingress Controller (Nginx)
 
 Seguindo em nosso terminal, vamos aos passos para criarmos nosso Nginx Ingress Controller:
 ```
@@ -76,7 +76,7 @@ Aguarde as propagações. Monitore com https://www.whatsmydns.net/ ou `nslookup`
 
 <br>
 
-#### **3. Instale o Cert-Manager**
+#### 3. Instale o Cert-Manager
 
 Vamos preparar o Cert-Manager que será o principal elemento, responsável pelos nossos certificados de forma geral dentro do nosso Cluster K8S:
 ```
@@ -94,7 +94,7 @@ kubectl get crds | grep cert-manager
 
 <br>
 
-#### **4. Crie um Cluster-Issuer para Let's Encrypt**
+#### 4. Crie um Cluster-Issuer para Let's Encrypt
 
 Salve este YAML como `cluster-issuer.yaml` e aplique-o com `kubectl apply -f k8s/setup/cluster-issuer.yaml`.
 ```
@@ -118,7 +118,7 @@ spec:
 
 <br>
 
-#### **5. Ingress para o ArgoCD**
+#### 5. Ingress para o ArgoCD
 
 Crie o namespace `argocd`:
 ```
@@ -160,7 +160,7 @@ spec:
 
 <br>
 
-#### **6. Setup do ArgoCD**
+#### 6. Setup do ArgoCD
 
 Aplique o manifesto OFICIAL para o ArgoCD, nós já temos uma namespace com nome `argocd` e vamos utilizá-lo:
 ```
@@ -181,7 +181,7 @@ kubectl get secret argocd-initial-admin-secret \
 
 <br>
 
-#### **7. Exemplo de YAML para "Application" - Afinal de contas, agora você vai usar repositórios Git como fonte única de verdade** (source of truth).
+#### 7. Exemplo de YAML para "Application". Afinal de contas, agora você vai usar repositórios Git como fonte única de verdade.
 
 Este projeto, que é um REPOSITÓRIO PÚBLICO, já possui uma aplicação de exemplo em `/app`, inclusive com Github Actions, que vai sempre fazer o CI/CD da aplicação, ajustando a versão da imagem Docker no arquivo `deployment.yaml`, na linha 19 em `/k8s/app/`, que será consumido pelo ArgoCD. Ajuste para seu uso conforme você desejar!
 

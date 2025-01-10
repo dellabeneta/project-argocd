@@ -32,7 +32,7 @@ O processo funciona conectando diferentes tecnologias. Sempre que houver altera�
 
 #### **Observações:**
 
-- É necessário um arquivo `terraform.tfvars` seu, em `/infra/terraform`. [Clique aqui para copiar um modelo!](https://github.com/dellabeneta/project-argocd/assets/tfvars-model)
+- É necessário um arquivo `terraform.tfvars` seu, em `/infra/terraform`. [Clique aqui para copiar um modelo!](https://github.com/dellabeneta/project-argocd/blob/main/assets/tfvars-model)
 - Kubectl
 - Helm
 - Conta na Digital Ocean e Token de acesso

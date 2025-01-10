@@ -2,8 +2,7 @@
 
 <div align="center">
 <img src="assets/banner.png"/>
-
-<br>
+</div>
 
 <div align="center">
 
@@ -20,7 +19,7 @@ O processo funciona conectando diferentes tecnologias. Sempre que houver altera�
 </div>
 
 
-### HOW-TO para você provisionar esse projeto: 
+### HOW-TO para provisionar este projeto: 
 
 
 #### **Pré-requisitos:**
@@ -31,7 +30,15 @@ O processo funciona conectando diferentes tecnologias. Sempre que houver altera�
 - Conta na Digital Ocean e Token de acesso
 - Um domínio válido com zona de DNS ativa
 
-<br>
+#### **Observações:**
+
+- É necessário um arquivo `terraform.tfvars` seu, em `/infra/terraform`. [Clique aqui para copiar um modelo!](https://github.com/dellabeneta/project-argocd/assets/tfvars-model)
+- Kubectl
+- Helm
+- Conta na Digital Ocean e Token de acesso
+- Um domínio válido com zona de DNS ativa
+
+
 
 ----------
 

@@ -20,8 +20,6 @@ O processo funciona conectando diferentes tecnologias. Sempre que houver altera�
 
 <br>
 
-### HOW-TO para provisionar este projeto: 
-
 #### Pré-requisitos:
 
 - Terraform instalado
@@ -37,7 +35,11 @@ O processo funciona conectando diferentes tecnologias. Sempre que houver altera�
 
 <br>
 
-#### Bora lá! 
+<div align="center">
+<h2>Bora de hands-on e nada de papo-furado!</h2>	
+</div>
+
+<br>
 
 #### 1. Configure o Cluster Kubernetes
 
@@ -53,27 +55,26 @@ Após uma considerável espera, vamos checar o estado do componentes:
 ```
 kubectl get all -A
 ```
-
-----------
+<br>
 
 #### **2. Instalar o Ingress Controller (Nginx)**
 
 Seguindo em nosso terminal, vamos aos passos para criarmos nosso Nginx Ingress Controller:
 ```
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/cloud/deploy.yaml
+kubectl apply \
+  -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/cloud/deploy.yaml
 ```
 Cheque o estado de tudo com: 
 ```
 kubectl get all -A
 ```
-- O nosso IP Público estará como `pending` por uns 3 minutos. Após isso, já crie os subdomínios para seu argocd e a aplicação. Eu tenho feito o meu dessa forma:
+O nosso IP Público estará como `pending` por uns 3 minutos. Após isso, já crie os subdomínios para seu argocd e a aplicação. Eu tenho feito o meu dessa forma:
+- argocd.seudominio.com ---> IP_DO_LOADBALANCER
+- app.seudominio.com ---> IP_DO_LOADBALANCER
 
-> argocd.seudominio.com ---> IP_DO_LOADBALANCER
-> app.seudominio.com ---> IP_DO_LOADBALANCER
+Aguarde as propagações. Monitorare como https://www.whatsmydns.net/ ou `nslookup` e `dig` no terminal.
 
-aguarde os DNS serem propagados.
-
-----------
+<br>
 
 #### **3. Instale o Cert-Manager**
 
@@ -90,7 +91,7 @@ Verifique se os CRDs foram aplicados corretamente:
 kubectl get crds | grep cert-manager
 ```
 
-----------
+<br>
 
 #### **4. Crie um Cluster-Issuer para Let's Encrypt**
 
@@ -114,7 +115,7 @@ spec:
             class: nginx
 ```
 
-----------
+<br>
 
 #### **5. Ingress para o ArgoCD**
 
@@ -156,7 +157,7 @@ spec:
               name: 443
 ```
 
-----------
+<br>
 
 #### **6. Setup do ArgoCD**
 
@@ -173,7 +174,7 @@ Busque sua senha do `admin`, gerada automaticamente durante o provisionamento, c
 kubectl get secret argocd-initial-admin-secret -n argocd -o jsonpath="{.data.password}" | base64 -d; echo
 ```
 
---------
+<br>
 
 #### **7. Exemplo de YAML para "Application" - Afinal de contas, agora você vai usar repositórios Git como fonte única de verdade** (source of truth).
 
@@ -207,7 +208,7 @@ Salve-o e aplique com, é claro, `kubectl apply -f k8s/argocd/application.yaml`
 #### Obrigado, pessoal :) 
 #### Critiquem, colaborem... acho que tomei uhns 8 copos de café!
 
------
+
 
 #### Documentação de Referência, sim, sempre a OFICIAL:
 

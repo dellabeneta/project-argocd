@@ -183,7 +183,7 @@ kubectl get secret argocd-initial-admin-secret \
 
 #### 7. Exemplo de YAML para "Application". Afinal de contas, agora você vai usar repositórios Git como fonte única de verdade.
 
-Este projeto, que é um REPOSITÓRIO PÚBLICO, já possui uma aplicação de exemplo em `/app`, inclusive com Github Actions, que vai sempre fazer o CI/CD da aplicação, ajustando a versão da imagem Docker no arquivo `deployment.yaml`, na linha 19 em `/k8s/app/`, que será consumido pelo ArgoCD. Ajuste para seu uso conforme você desejar!
+Este projeto, que é um REPOSITÓRIO PÚBLICO, já possui uma aplicação de exemplo em `/app`, inclusive com Github Actions, que vai sempre fazer o CI da aplicação, ajustando a versão da imagem Docker no arquivo `deployment.yaml`, na linha 19 em `/k8s/app/`, que será consumido pelo ArgoCD. Ajuste conforme sua demanda.
 
 Segue exemplo de YAML baseado **neste projeto**:
 ```

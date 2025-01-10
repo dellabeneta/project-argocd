@@ -56,7 +56,7 @@ O processo funciona conectando diferentes tecnologias. Sempre que houver altera�
     registry_name           = "<registry-name>"
     subscription_tier_slug  = "<subscription-tier>"
 
-  ***A Segunda, é que eu usei o Terraform com Backend Remoto,mas é opcional.***
+  ***A Segunda, é que eu usei o Terraform com Backend Remoto, mas é opcional.***
 
 ----------
 
@@ -91,10 +91,10 @@ kubectl get all -A
 ```
 - O nosso IP Público estará como `pending` por uns 3 minutos. Após isso, já crie os subdomínios para seu argocd e a aplicação. Eu tenho feito o meu dessa forma:
 
-	> argocd.seudominio.com ---> IP_DO_LOADBALANCER
-	> app.seudominio.com ---> IP_DO_LOADBALANCER
+> argocd.seudominio.com ---> IP_DO_LOADBALANCER
+> app.seudominio.com ---> IP_DO_LOADBALANCER
 
-	aguarde os DNS serem propagados.
+aguarde os DNS serem propagados.
 
 ----------
 

@@ -18,9 +18,9 @@ Com um repositório GitHub bem estruturado, contendo pastas específicas para a 
 O processo funciona conectando diferentes tecnologias. Sempre que houver alterações no código-fonte, um workflow gera automaticamente uma nova imagem Docker da aplicação. Em seguida, esse mesmo workflow atualiza o manifesto Kubernetes correspondente, armazenado na pasta designada. O ArgoCD, por sua vez, detecta essa atualização no manifesto e sincroniza a nova versão da aplicação no cluster, criando um fluxo contínuo e confiável de deploy automatizado.
 </div>
 
+<br>
 
 ### HOW-TO para provisionar este projeto: 
-
 
 #### **Pré-requisitos:**
 
@@ -30,38 +30,14 @@ O processo funciona conectando diferentes tecnologias. Sempre que houver altera�
 - Conta na Digital Ocean e Token de acesso
 - Um domínio válido com zona de DNS ativa
 
-#### **Observações:**
+#### **Observações importantes:**
 
 - É necessário um arquivo `terraform.tfvars` seu, em `/infra/terraform`. [Clique aqui para copiar um modelo!](https://github.com/dellabeneta/project-argocd/blob/main/assets/tfvars-model)
 - Eu optei por usar um backend remoto com S3 na AWS e tabela Dynamo para garantir o Lock. Mas isso é opcional...
 
-----------
+<br>
 
-DUAS OBSERVAÇÕES DE INÍCIO:
-
-  A Primeira é que você PRECISA de um `.tfvars`, segue um modelo:
-
-    do_token                = "<your-do-token>"
-    cluster_name            = "<cluster-name>"
-    region                  = "<region>"
-    k8s_version             = "<k8s-version>"
-    node_size               = "<node-size>"
-    vpc_name                = "<vpc-name>"
-    vpc_ip_range            = "<vpc-ip-range>"
-    cluster_tags            = ["<cluster-tag>"]
-    node_pool_tags          = ["<node-pool-tag>"]
-    node_pool_name          = "<node-pool-name>"
-    auto_scale              = <true-or-false>
-    min_nodes               = <min-nodes>
-    max_nodes               = <max-nodes>
-    registry_name           = "<registry-name>"
-    subscription_tier_slug  = "<subscription-tier>"
-
-  A Segunda, é que eu usei o Terraform com Backend Remoto, mas é opcional. Fique atento!
-
-----------
-
-##### FINALMENTE, VAMOS!
+Bora lá! 
 
 #### **1. Configure o Cluster Kubernetes**
 

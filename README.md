@@ -80,7 +80,8 @@ Aguarde as propagações. Monitorare como https://www.whatsmydns.net/ ou `nslook
 
 Vamos preparar o Cert-Manager que será o principal elemento, responsável pelos nossos certificados de forma geral dentro do nosso Cluster K8S:
 ```
-kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.16.2/cert-manager.yaml
+kubectl apply \
+-f https://github.com/cert-manager/cert-manager/releases/download/v1.16.2/cert-manager.yaml
 ```
 Aguarde os pods ficarem prontos:
 ```

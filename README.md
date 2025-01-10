@@ -29,15 +29,37 @@ O projeto utiliza a Digital Ocean como provedor de cloud, com uma configuração
 > ⚠️ **Importante¹**: Antes de executar o Terraform, crie seu arquivo `terraform.tfvars` na pasta `infra/terraform/` com suas configurações específicas. O restante do código Terraform é genérico e reutilizável.
 
 Exemplo de `terraform.tfvars`:
-```hcl
-do_token        = "seu_token_da_digital_ocean"
-region          = "nycX"
-cluster_name    = "seu-cluster"
-k8s_version     = "1.29.X-do.X"
-node_pool_name  = "worker-pool"
-node_size       = "s-2vcpu-4gb"
-min_nodes       = 1
-max_nodes       = 5
+```
+
+do_token = "dop_v1_xxxxxxxxxxxxxxxxxxxxxx5"
+
+cluster_name = "project-argocd"
+
+region = "sfo2"
+
+k8s_version = "1.31.1-do.5"
+
+node_size = "s-2vcpu-2gb"
+
+vpc_name = "project-argocd-vpc"
+
+vpc_ip_range = "10.1.0.0/16"
+
+cluster_tags = ["project-argocd"]
+
+node_pool_tag = ["project-argocd"]
+
+node_pool_name = "project-argocd-worker-pool"
+
+auto_scale = true
+
+min_nodes = 1
+
+max_nodes = 3
+
+registry_name = "project-argocd-registry"
+
+subscription_tier_slug = "basic"
 ```
 
 - **Cluster Kubernetes (DOKS)** 🎯:

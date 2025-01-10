@@ -5,5 +5,6 @@ terraform {
     region         = "sa-east-1"
     encrypt        = true
     dynamodb_table = "terraformstates-lock"
+    michel teste
   }
 }

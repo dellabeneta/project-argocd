@@ -25,6 +25,8 @@ resource "digitalocean_container_registry_docker_credentials" "docr_credentials"
 }
 
 resource "local_file" "kubeconfig" {
-  content  = digitalocean_kubernetes_cluster.doks.kube_config[0].raw_config
-  filename = "${path.module}/kubeconfig_${digitalocean_kubernetes_cluster.doks.name}"
+  content              = digitalocean_kubernetes_cluster.doks.kube_config[0].raw_config
+  filename             = pathexpand("~/.kube/config")
+  directory_permission = "0755"
+  file_permission      = "0600"
 }

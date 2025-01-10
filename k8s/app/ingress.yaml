@@ -9,10 +9,10 @@ spec:
   ingressClassName: nginx
   tls:
   - hosts:
-    - podname.dellabeneta.tech
+    - app.dellabeneta.tech
     secretName: podname-tls
   rules:
-  - host: podname.dellabeneta.tech
+  - host: app.dellabeneta.tech
     http:
       paths:
       - path: /

@@ -1,7 +1,7 @@
 <h1 align="center">Projeto de fluxo contínuo, com Argo CD.</h1>
 
 <div align="center">
-<img src="assets/banner2.png"/>
+<img src="assets/banner.png"/>
 </div>
 
 <br>
@@ -20,41 +20,241 @@ Com um repositório GitHub bem estruturado, contendo pastas específicas para a 
 O processo funciona conectando diferentes tecnologias. Sempre que houver alterações no código-fonte, um workflow gera automaticamente uma nova imagem Docker da aplicação. Em seguida, esse mesmo workflow atualiza o manifesto Kubernetes correspondente, armazenado na pasta designada. O ArgoCD, por sua vez, detecta essa atualização no manifesto e sincroniza a nova versão da aplicação no cluster, criando um fluxo contínuo e confiável de deploy automatizado.
 </div>
 
-#### Observações Gerais:
 
-##### O projeto utiliza a Digital Ocean como IaaS, com IaC em Terraform que provisiona um Custer Kubernetes gerenciado (DOKS) com:
+### HOW-TO para você provisionar esse projeto: 
 
-  - Integração nativa com registro de containers
-  - Node Pool com auto-scaling configurado
-  - VPC dedicada para isolamento de rede
 
-##### Utilizei uma aplicação Python/Flask, by ChatGPT, para termos algo a ser buildado pelo Workflow Github Actions, que: 
+#### **Pré-requisitos:**
 
-  - Roda na porta 8080
-  - Utiliza a imagem base `python:3.9-slim` para menor footprint
-  - Expõe informações do hostname do pod + replicaset + deployment
-  - Interface simples renderizada via template HTML
+- Terraform
+- Kubectl
+- Helm
+- Conta na Digital Ocean e Token de acesso
+- Um domínio válido com zona de DNS ativa
 
-##### Argo CD: 
+<br>
 
-- **Sync Policy**: 
-  - Automático com `selfHeal: true`
-  - Prune habilitado para limpar recursos obsoletos
-  - Criação automática de namespaces
-- **Source**: 
-  - Branch: HEAD (última versão)
-  - Path: k8s/app
-  - Monitoramento contínuo do repositório Git
+----------
 
-#### Scripts de Automação ( quero reduzir ou abstraí-los ainda mais... )
+***Duas observações de início:***
 
-O diretório `scripts/` contém utilitários essenciais:
-1. `install-nginx-ingress.sh`: Configura o controlador de ingress
-2. `install-cert-manager.sh`: Gerenciamento de certificados SSL/TLS
-3. `install-argocd.sh`: Deploy do Argo CD
-4. `install-kubeconfig.sh`: Configuração do acesso ao cluster
+  ***A Primeira é que você PRECISA de um `tfvars`, segue um modelo:***
 
---
+    do_token                = "<your-do-token>"
+    cluster_name            = "<cluster-name>"
+    region                  = "<region>"
+    k8s_version             = "<k8s-version>"
+    node_size               = "<node-size>"
+    vpc_name                = "<vpc-name>"
+    vpc_ip_range            = "<vpc-ip-range>"
+    cluster_tags            = ["<cluster-tag>"]
+    node_pool_tags          = ["<node-pool-tag>"]
+    node_pool_name          = "<node-pool-name>"
+    auto_scale              = <true-or-false>
+    min_nodes               = <min-nodes>
+    max_nodes               = <max-nodes>
+    registry_name           = "<registry-name>"
+    subscription_tier_slug  = "<subscription-tier>"
 
-Muita melhoras ainda para serem feitas!
-Trazer um HOW-TO... com passo a passo para subir tudo.
+  ***A Segunda, é que eu usei o Terraform com Backend Remoto,mas é opcional.***
+
+----------
+
+### FINALMENTE, VAMOS!
+
+#### **1. Configure o Cluster Kubernetes**
+
+Abra seu terminal no path raiz do `projeto-argocd` e execute esses dois comandos para o terraform provisionar o DOKS (serviço gerenciado de Kubernetes da Digital Ocean):
+
+```
+terraform -chdir=infra/terraform init
+```
+```
+terraform -chdir=infra/terraform apply --auto-approve
+```
+Após uma considerável espera, vamos checar o estado do componentes: 
+```
+kubectl get all -A
+```
+
+----------
+
+#### **2. Instalar o Ingress Controller (Nginx)**
+
+Seguindo em nosso terminal, vamos aos passos para criarmos nosso Nginx Ingress Controller:
+```
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/cloud/deploy.yaml
+```
+Cheque o estado de tudo com: 
+```
+kubectl get all -A
+```
+- O nosso IP Público estará como `pending` por uns 3 minutos. Após isso, já crie os subdomínios para seu argocd e a aplicação. Eu tenho feito o meu dessa forma:
+
+	> argocd.seudominio.com ---> IP_DO_LOADBALANCER
+	> app.seudominio.com ---> IP_DO_LOADBALANCER
+
+	aguarde os DNS serem propagados.
+
+----------
+
+#### **3. Instale o Cert-Manager**
+
+Vamos preparar o Cert-Manager que será o principal elemento, responsável pelos nossos certificados de forma geral dentro do nosso Cluster K8S:
+```
+kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.16.2/cert-manager.yaml
+```
+Aguarde os pods ficarem prontos:
+```
+kubectl wait --for=condition=Ready pods --all -n cert-manager --timeout=300s
+```
+Verifique se os CRDs foram aplicados corretamente:
+```
+kubectl get crds | grep cert-manager
+```
+
+----------
+
+#### **4. Crie um Cluster-Issuer para Let's Encrypt**
+
+Salve este YAML como `cluster-issuer.yaml` e aplique-o com `kubectl apply -f k8s/setup/cluster-issuer.yaml`.
+```
+# cluster-issuer.yaml
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-prod
+spec:
+  acme:
+	server: https://acme-v02.api.letsencrypt.org/directory
+    email: email@dominio.com
+    privateKeySecretRef:
+      name: letsencrypt-prod
+    server: https://acme-v02.api.letsencrypt.org/directory
+    solvers:
+      - http01:
+          ingress:
+            class: nginx
+```
+
+----------
+
+#### **5. Ingress para o ArgoCD**
+
+Crie o namespace `argocd`:
+```
+kubectl create namespace argocd
+```
+Confira com:
+```
+kubectl get namespaces
+```
+Mesmo processo, salve o YAML como `argo-ingress.yaml` e aplique com `kubectl apply -f k8s/setup/argo-ingress.yaml`.
+```
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: argocd-ingress
+  annotations:
+	nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+	nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+	nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+	cert-manager.io/cluster-issuer: "letsencrypt-prod"  
+spec:
+	ingressClassName: nginx
+	tls:
+	- hosts:
+	  - argocd.seudominio.com
+	  secretName: argocd-server-tls
+  rules:
+  - host: argocd.seudominio.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: argocd-server
+            port:
+              name: 443
+```
+
+----------
+
+#### **6. Setup do ArgoCD**
+
+Aplique o manifesto OFICIAL para o ArgoCD, nós já temos uma namespace com nome `argocd` e vamos utilizá-lo:
+```
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+```
+Após alguns poucos minutos, ele estará no ar com seu certificado já emito pelo Cert-Manager + Ingress que criamos.
+
+Você agora pode acessar pelo https://argocd.dominio.com.
+
+Busque sua senha do `admin`, gerada automaticamente durante o provisionamento, com o comando:
+```
+kubectl get secret argocd-initial-admin-secret -n argocd -o jsonpath="{.data.password}" | base64 -d; echo
+```
+
+--------
+
+#### **7. Exemplo de YAML para "Application" - Afinal de contas, agora você vai usar repositórios Git como fonte única de verdade** (source of truth).
+
+Este projeto, que é um REPOSITÓRIO PÚBLICO já possui uma aplicação de exemplo em `/app)` inclusive com Github Actions, que vai sempre fazer o CI/CD da aplicação e ajustando a versão da imagem Docker no arquivo `deployment.yaml` em `/k8s/app/`, que será consumido pelo ArgoCD.
+
+Ajuste para seu uso conforme você desejar!
+
+Segue exemplo de YAML baseado **neste projeto**:
+```
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: project-argocd
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/dellabeneta/project-argocd.git
+    targetRevision: HEAD
+    path: k8s/app
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+```
+Salve-o e aplique com, é claro, `kubectl apply -f k8s/argocd/application.yaml`
+
+#### Obrigado, pessoal :) 
+#### Critiquem, colaborem... acho que tomei uhns 8 copos de café!
+
+-----
+
+#### Documentação de Referência, sim, sempre a OFICIAL:
+
+**ArgoCD**:
+  - https://argo-cd.readthedocs.io/en/stable/
+
+**Kubernetes**:
+  - https://kubernetes.io/docs/
+  - https://kubernetes.io/docs/setup/
+  - https://kubernetes.io/docs/concepts/
+
+**Docker**:
+  - https://docs.docker.com/
+  - https://docs.docker.com/get-started/
+  - https://docs.docker.com/engine/reference/commandline/
+
+**Terraform**:
+  - https://www.terraform.io/docs
+  - https://www.terraform.io/docs/providers/
+  - https://learn.hashicorp.com/collections/terraform/aws-get-started
+
+**GitHub Actions**:
+  - https://docs.github.com/en/actions
+  - https://docs.github.com/en/actions/using-workflows
+  - https://docs.github.com/en/actions/learn-github-actions

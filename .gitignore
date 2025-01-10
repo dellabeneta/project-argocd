@@ -1,21 +1,28 @@
-# Terraform
-*.tfvars
+# Terraform specific
+infra/terraform/terraform.tfvars
+infra/terraform/backend.tf
 *.tfstate
 *.tfstate.*
+*.tfvars
 .terraform/
 .terraform.lock.hcl
-kubeconfig_*
+crash.log
 
-# Docker
-.docker/
-*.env
-.env
-docker-compose.override.yml
-docker-compose.*.yml
-!docker-compose.yml
-docker.env
-.dockerignore
-docker-volumes/
+# IDE and Editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
 
 # Python
 __pycache__/
@@ -23,7 +30,6 @@ __pycache__/
 *$py.class
 *.so
 .Python
-env/
 build/
 develop-eggs/
 dist/
@@ -40,25 +46,8 @@ wheels/
 .installed.cfg
 *.egg
 venv/
-
-# IDEs and editors
-.idea/
-.vscode/
-*.swp
-*.swo
-*~
-
-# OS generated files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
+.env
 
 # Logs
 *.log
 logs/
-infra/terraform/backend.tf
-infra/terraform/backend.tf

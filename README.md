@@ -54,5 +54,7 @@ O diretório `scripts/` contém utilitários essenciais:
 3. `install-argocd.sh`: Deploy do Argo CD
 4. `install-kubeconfig.sh`: Configuração do acesso ao cluster
 
+--
+
 Muita melhoras ainda para serem feitas!
-Pretendo trazer um HOW-TO... passa a passo de como subir tudo.
+Trazer um HOW-TO... com passo a passo para subir tudo.

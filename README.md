@@ -210,32 +210,25 @@ spec:
 ```
 Salve-o e aplique com, é claro, `kubectl apply -f k8s/argocd/application.yaml`
 
-#### Obrigado, pessoal :) 
-#### Critiquem, colaborem... acho que tomei uhns 8 copos de café!
+<br>
 
+<div align="center">
+<h2>Referências</h2>	
+</div>
 
+<br>
 
-#### Documentação de Referência, sim, sempre a OFICIAL:
-
-**ArgoCD**:
-  - https://argo-cd.readthedocs.io/en/stable/
-
-**Kubernetes**:
-  - https://kubernetes.io/docs/
-  - https://kubernetes.io/docs/setup/
-  - https://kubernetes.io/docs/concepts/
-
-**Docker**:
-  - https://docs.docker.com/
-  - https://docs.docker.com/get-started/
-  - https://docs.docker.com/engine/reference/commandline/
-
-**Terraform**:
-  - https://www.terraform.io/docs
-  - https://www.terraform.io/docs/providers/
-  - https://learn.hashicorp.com/collections/terraform/aws-get-started
-
-**GitHub Actions**:
-  - https://docs.github.com/en/actions
-  - https://docs.github.com/en/actions/using-workflows
-  - https://docs.github.com/en/actions/learn-github-actions
+- https://argo-cd.readthedocs.io/en/stable/
+- https://kubernetes.io/docs/
+- https://kubernetes.io/docs/setup/
+- https://kubernetes.io/docs/concepts/
+- https://docs.docker.com/
+- https://docs.docker.com/get-started/
+- https://docs.docker.com/engine/reference/commandline/
+- https://www.terraform.io/docs
+- https://www.terraform.io/docs/providers/
+- https://learn.hashicorp.com/collections/terraform/aws-get-started
+- https://docs.github.com/en/actions
+- https://docs.github.com/en/actions/using-workflows
+- https://docs.github.com/en/actions/learn-github-actions
+  <br>

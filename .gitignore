@@ -61,3 +61,4 @@ Thumbs.db
 *.log
 logs/
 infra/terraform/backend.tf
+infra/terraform/backend.tf

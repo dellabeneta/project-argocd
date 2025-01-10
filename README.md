@@ -36,7 +36,7 @@ O processo funciona conectando diferentes tecnologias. Sempre que houver altera√
 <br>
 
 <div align="center">
-<h2>Bora de hands-on e nada de papo-furado!</h2>	
+<h2>+ hands on e - papo-furado!</h2>	
 </div>
 
 <br>

@@ -24,21 +24,16 @@ O processo funciona conectando diferentes tecnologias. Sempre que houver altera�
 
 #### **Pré-requisitos:**
 
-- Terraform
-- Kubectl
-- Helm
+- Terraform instalado
+- Kubectl instalado
+- Helm instalado
 - Conta na Digital Ocean e Token de acesso
 - Um domínio válido com zona de DNS ativa
 
 #### **Observações:**
 
 - É necessário um arquivo `terraform.tfvars` seu, em `/infra/terraform`. [Clique aqui para copiar um modelo!](https://github.com/dellabeneta/project-argocd/blob/main/assets/tfvars-model)
-- Kubectl
-- Helm
-- Conta na Digital Ocean e Token de acesso
-- Um domínio válido com zona de DNS ativa
-
-
+- Eu optei por usar um backend remoto com S3 na AWS e tabela Dynamo para garantir o Lock. Mas isso é opcional...
 
 ----------
 

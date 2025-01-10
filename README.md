@@ -164,7 +164,9 @@ spec:
 
 Aplique o manifesto OFICIAL para o ArgoCD, nós já temos uma namespace com nome `argocd` e vamos utilizá-lo:
 ```
-kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+kubectl apply \
+-n argocd \
+-f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 ```
 Após alguns poucos minutos, ele estará no ar com seu certificado já emito pelo Cert-Manager + Ingress que criamos.
 
@@ -172,7 +174,9 @@ Você agora pode acessar pelo https://argocd.dominio.com.
 
 Busque sua senha do `admin`, gerada automaticamente durante o provisionamento, com o comando:
 ```
-kubectl get secret argocd-initial-admin-secret -n argocd -o jsonpath="{.data.password}" | base64 -d; echo
+kubectl get secret argocd-initial-admin-secret \
+-n argocd \
+-o jsonpath="{.data.password}" | base64 -d; echo
 ```
 
 <br>

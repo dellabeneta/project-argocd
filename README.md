@@ -1,4 +1,4 @@
-<h1 align="center">Projeto de fluxo contínuo, com Argo CD.</h1>
+<h1 align="center">Projeto de fluxo contínuo com Argo CD.</h1>
 
 <div align="center">
 <img src="assets/banner.png"/>
@@ -13,7 +13,7 @@
 <br>
 
 <div align="justify">
-Com um repositório GitHub bem estruturado, contendo pastas específicas para a aplicação, arquivos Terraform para provisionamento de infraestrutura, e manifests Kubernetes, é possível implementar um fluxo totalmente automatizado: do commit no código-fonte ao deploy da aplicação em um cluster Kubernetes.
+Com um repositório GitHub bem estruturado, contendo pastas específicas para a aplicação, arquivos Terraform para provisionamento de infraestrutura e manifests Kubernetes, é possível implementar um fluxo totalmente automatizado: do commit no código-fonte ao deploy da aplicação em um cluster Kubernetes.
 <p><p>
 O processo funciona conectando diferentes tecnologias. Sempre que houver alterações no código-fonte, um workflow gera automaticamente uma nova imagem Docker da aplicação. Em seguida, esse mesmo workflow atualiza o manifesto Kubernetes correspondente, armazenado na pasta designada. O ArgoCD, por sua vez, detecta essa atualização no manifesto e sincroniza a nova versão da aplicação no cluster, criando um fluxo contínuo e confiável de deploy automatizado.
 </div>
@@ -68,11 +68,11 @@ Cheque o estado de tudo com:
 ```
 kubectl get all -A
 ```
-O nosso IP Público estará como `pending` por uns 3 minutos. Após isso, já crie os subdomínios para seu argocd e a aplicação. Eu tenho feito o meu dessa forma:
+O nosso IP Público estará como `pending` por uns 3 minutos. Após isso, já crie os subdomínios para seu ArgoCD e a aplicação. Eu tenho feito o meu dessa forma:
 - argocd.seudominio.com ---> IP_DO_LOADBALANCER
 - app.seudominio.com ---> IP_DO_LOADBALANCER
 
-Aguarde as propagações. Monitorare como https://www.whatsmydns.net/ ou `nslookup` e `dig` no terminal.
+Aguarde as propagações. Monitore com https://www.whatsmydns.net/ ou `nslookup` e `dig` no terminal.
 
 <br>
 

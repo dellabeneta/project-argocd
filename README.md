@@ -22,7 +22,7 @@ O processo funciona conectando diferentes tecnologias. Sempre que houver altera�
 
 ### HOW-TO para provisionar este projeto: 
 
-#### **Pré-requisitos:**
+#### Pré-requisitos:
 
 - Terraform instalado
 - Kubectl instalado
@@ -30,16 +30,16 @@ O processo funciona conectando diferentes tecnologias. Sempre que houver altera�
 - Conta na Digital Ocean e Token de acesso
 - Um domínio válido com zona de DNS ativa
 
-#### **Observações importantes:**
+#### Observações importantes:
 
 - É necessário um arquivo `terraform.tfvars` seu, em `/infra/terraform`. [Clique aqui para copiar um modelo!](https://github.com/dellabeneta/project-argocd/blob/main/assets/tfvars-model)
 - Eu optei por usar um backend remoto com S3 na AWS e tabela Dynamo para garantir o Lock. Mas isso é opcional...
 
 <br>
 
-Bora lá! 
+#### Bora lá! 
 
-#### **1. Configure o Cluster Kubernetes**
+#### 1. Configure o Cluster Kubernetes
 
 Abra seu terminal no path raiz do `projeto-argocd` e execute esses dois comandos para o terraform provisionar o DOKS (serviço gerenciado de Kubernetes da Digital Ocean):
 

@@ -36,9 +36,9 @@ O processo funciona conectando diferentes tecnologias. Sempre que houver altera�
 
 ----------
 
-***Duas observações de início:***
+DUAS OBSERVAÇÕES DE INÍCIO:
 
-  ***A Primeira é que você PRECISA de um `tfvars`, segue um modelo:***
+  A Primeira é que você PRECISA de um `.tfvars`, segue um modelo:
 
     do_token                = "<your-do-token>"
     cluster_name            = "<cluster-name>"
@@ -56,11 +56,11 @@ O processo funciona conectando diferentes tecnologias. Sempre que houver altera�
     registry_name           = "<registry-name>"
     subscription_tier_slug  = "<subscription-tier>"
 
-  ***A Segunda, é que eu usei o Terraform com Backend Remoto, mas é opcional.***
+  A Segunda, é que eu usei o Terraform com Backend Remoto, mas é opcional. Fique atento!
 
 ----------
 
-### FINALMENTE, VAMOS!
+##### FINALMENTE, VAMOS!
 
 #### **1. Configure o Cluster Kubernetes**
 

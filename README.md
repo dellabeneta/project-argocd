@@ -31,12 +31,11 @@ O processo funciona conectando diferentes tecnologias. Sempre que houver altera�
 #### Observações importantes:
 
 - É necessário um arquivo `terraform.tfvars` seu, em `/infra/terraform`. [Clique aqui para copiar um modelo!](https://github.com/dellabeneta/project-argocd/blob/main/assets/tfvars-model)
-- Eu optei por usar um backend remoto com S3 na AWS e tabela Dynamo para garantir o Lock. Mas isso é opcional...
-
+- Eu usei o State do Terraform de maneira remota. É opcional mas, [clique aqui se quiser seguir essa boa prática!](https://github.com/dellabeneta/project-argocd/blob/main/assets/backend-model)
 <br>
 
 <div align="center">
-<h2>Vamos para a prática, sem mais conversa fiada!</h2>	
+<h2>Vamos para a prática, sem mais conversas!</h2>	
 </div>
 
 <br>

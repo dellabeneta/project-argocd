@@ -1,0 +1,9 @@
+terraform {
+  backend "s3" {
+    bucket         = "<your-backend-bucket>"
+    key            = "<your-backend-subpath>"
+    region         = "<your-backend-bucket-region>"
+    encrypt        = "<true>" or <"false">
+    dynamodb_table = "<your-terraform-state-lock-dynamodb-table>"
+  }
+}

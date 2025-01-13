@@ -12,10 +12,10 @@ spec:
   ingressClassName: nginx
   tls:
   - hosts:
-    - argocd.dellabeneta.tech
+    - argocd.<SEU_DOMINIO>
     secretName: argocd-server-tls
   rules:
-  - host: argocd.dellabeneta.tech
+  - host: argocd.<SEU_DOMINIO>
     http:
       paths:
       - path: /

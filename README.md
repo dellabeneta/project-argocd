@@ -24,7 +24,6 @@ O processo funciona conectando diferentes tecnologias. Sempre que houver altera�
 
 - Terraform instalado
 - Kubectl instalado
-- Helm instalado
 - Conta na Digital Ocean e Token de acesso
 - Um domínio válido com zona de DNS ativa
 

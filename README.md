@@ -18,6 +18,10 @@ Com um repositório GitHub bem estruturado, contendo pastas específicas para a 
 O processo funciona conectando diferentes tecnologias. Sempre que houver alterações no código-fonte, um workflow gera automaticamente uma nova imagem Docker da aplicação. Em seguida, esse mesmo workflow atualiza o manifesto Kubernetes correspondente, armazenado na pasta designada. O ArgoCD, por sua vez, detecta essa atualização no manifesto e sincroniza a nova versão da aplicação no cluster, criando um fluxo contínuo e confiável de deploy automatizado.
 </div>
 
+<div align="center">
+<img src="assets/diagram.svg"/>
+</div>
+
 <br>
 
 #### Pré-requisitos:

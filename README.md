@@ -1,5 +1,7 @@
 <h1 align="center">Projeto de fluxo contínuo com Argo CD.</h1>
 
+<br>
+
 <div align="center">
 <img src="assets/banner.png"/>
 </div>
@@ -22,9 +24,16 @@ O processo funciona conectando diferentes tecnologias. Sempre que houver altera�
 <br>
 
 <div align="center">
+<h2>Desenho da arquitetura</h2>	
+
+<br>
+
 <img src="assets/diagram.svg"/>
 </div>
-</br>
+
+<div align="center">
+<h2>Vamos à prática</h2>	
+</div>
 
 <br>
 
@@ -39,12 +48,6 @@ O processo funciona conectando diferentes tecnologias. Sempre que houver altera�
 
 - É necessário um arquivo `terraform.tfvars` seu, em `/infra/terraform`. [Clique aqui para copiar um modelo!](https://github.com/dellabeneta/project-argocd/blob/main/assets/tfvars-model)
 - Eu usei o State do Terraform de maneira remota. É opcional mas, [clique aqui se quiser seguir essa boa prática!](https://github.com/dellabeneta/project-argocd/blob/main/assets/backend-model)
-<br>
-
-<div align="center">
-<h2>Vamos para a prática, sem mais conversas!</h2>	
-</div>
-
 <br>
 
 #### 1. Configure o Cluster Kubernetes

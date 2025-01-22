@@ -10,6 +10,7 @@
 [![Version](https://img.shields.io/badge/Version-1.1.0-blue?logo=github)](https://github.com/dellabeneta/project-argocd/releases) [![License](https://img.shields.io/github/license/dellabeneta/project-argocd?label=License&color=blue&logo=opensourceinitiative)](https://github.com/dellabeneta/project-argocd/blob/main/LICENSE) [![Infrastructure](https://img.shields.io/badge/Infrastructure-Terraform-blue?logo=terraform)](https://github.com/dellabeneta/project-argocd/tree/main/infra/terraform) 
 [![Kubernetes](https://img.shields.io/badge/Kubernetes-ready-brightgreen?logo=kubernetes)](https://kubernetes.io/docs/) [![Argo CD](https://img.shields.io/badge/Argo--CD-ready-brightgreen?logo=argo)](https://argo-cd.readthedocs.io/)
 </div>
+
 <br>
 
 <div align="justify">
@@ -18,9 +19,12 @@ Com um repositório GitHub bem estruturado, contendo pastas específicas para a 
 O processo funciona conectando diferentes tecnologias. Sempre que houver alterações no código-fonte, um workflow gera automaticamente uma nova imagem Docker da aplicação. Em seguida, esse mesmo workflow atualiza o manifesto Kubernetes correspondente, armazenado na pasta designada. O ArgoCD, por sua vez, detecta essa atualização no manifesto e sincroniza a nova versão da aplicação no cluster, criando um fluxo contínuo e confiável de deploy automatizado.
 </div>
 
+<br>
+
 <div align="center">
 <img src="assets/diagram.svg"/>
 </div>
+</br>
 
 <br>
 

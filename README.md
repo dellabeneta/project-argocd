@@ -1,4 +1,4 @@
-<h1 align="center">Projeto de fluxo contínuo com Argo CD.</h1>
+<h1 align="center">Projeto de fluxo contínuo com Argo CD</h1>
 
 <br>
 

@@ -24,8 +24,9 @@ O processo funciona conectando diferentes tecnologias. Sempre que houver altera√
 <br>
 
 <div align="center">
+	
 	<a href="https://www.digitalocean.com/?refcode=c231bd46146c&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge"><img src="https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%202.svg" alt="DigitalOcean Referral Badge" /></a>
-	[![DigitalOcean Referral Badge](https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%202.svg)](https://www.digitalocean.com/?refcode=c231bd46146c&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge)
+	
 <h2>Desenho da arquitetura</h2>	
 
 <br>
